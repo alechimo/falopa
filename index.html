@@ -1,0 +1,76 @@
+<html><head><base href="https://open-uas.github.io/" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirector App</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  .container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  h1 {
+    color: #333;
+  }
+  #countdown {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  #redirectButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  #redirectButton:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Redirector App</h1>
+  <p>You will be redirected to the target URL in <span id="countdown">5</span> seconds.</p>
+  <button id="redirectButton">Redirect Now</button>
+</div>
+
+<script>
+  const targetUrl = 'https://ouo.io/asHiiN';
+  let countdown = 5;
+
+  function updateCountdown() {
+    document.getElementById('countdown').textContent = countdown;
+    if (countdown > 0) {
+      countdown--;
+      setTimeout(updateCountdown, 1000);
+    } else {
+      redirect();
+    }
+  }
+
+  function redirect() {
+    window.location.href = targetUrl;
+  }
+
+  document.getElementById('redirectButton').addEventListener('click', redirect);
+
+  updateCountdown();
+</script>
+</body>
+</html>
